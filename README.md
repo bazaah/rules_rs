@@ -357,6 +357,7 @@ See https://registry.bazel.build/docs/rules_rs
 - [Perplexity](https://perplexity.ai)
 - [formatjs](https://github.com/formatjs/formatjs)
 - [Trace Machina Nativelink](https://github.com/TraceMachina/nativelink)
+- [Selenium](https://github.com/SeleniumHQ/selenium)
 
 ## Telemetry And Privacy Policy
 
