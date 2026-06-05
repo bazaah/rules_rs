@@ -217,7 +217,7 @@ def declare_rustc_toolchains(
                 visibility = ["//visibility:public"],
             )
 
-            if target_triple not in SUPPORTED_EXEC_TRIPLES:
+            if target_triple in _BPF_TARGET_TRIPLES:
                 continue
 
             native.toolchain(
