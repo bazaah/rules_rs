@@ -90,8 +90,7 @@ single_version_override(
 
 single_version_override(
     module_name = "systemd",
-    patch_strip = 1,
-    patches = ["//:systemd-codegen.patch"],
+    version = "260.1.bcr.1",
 )
 
 # Fix swift toolchains...
