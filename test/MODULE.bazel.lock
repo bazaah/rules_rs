@@ -57,7 +57,8 @@
     "https://bcr.bazel.build/modules/bazel_features/1.42.0/MODULE.bazel": "e8ca15cb2639c5f12183db6dcb678735555d0cdd739b32a0418b6532b5e565f8",
     "https://bcr.bazel.build/modules/bazel_features/1.43.0/MODULE.bazel": "defa2226f06ba20550d6548c3a2ea2a7929634437a52973869c20c225450eb91",
     "https://bcr.bazel.build/modules/bazel_features/1.45.0/MODULE.bazel": "7daec6d87ab0703417486d4cb948af0b06f55d4d7c08cbb5978c80e79b538edf",
-    "https://bcr.bazel.build/modules/bazel_features/1.45.0/source.json": "635e4536e09ff125b8972e0fa239c135fde5f18701f7d5115680560651dfb41d",
+    "https://bcr.bazel.build/modules/bazel_features/1.47.0/MODULE.bazel": "e34df3cb35b1684cfa69923a61ae3803595babd3942cd306a488d51400886b30",
+    "https://bcr.bazel.build/modules/bazel_features/1.47.0/source.json": "4ba0b5138327f2d73352a51547a4e49a0a828ef400e046b15334d8905bf6b7ff",
     "https://bcr.bazel.build/modules/bazel_features/1.9.0/MODULE.bazel": "885151d58d90d8d9c811eb75e3288c11f850e1d6b481a8c9f766adee4712358b",
     "https://bcr.bazel.build/modules/bazel_features/1.9.1/MODULE.bazel": "8f679097876a9b609ad1f60249c49d68bfab783dd9be012faf9d82547b14815a",
     "https://bcr.bazel.build/modules/bazel_lib/3.0.0/MODULE.bazel": "22b70b80ac89ad3f3772526cd9feee2fa412c2b01933fea7ed13238a448d370d",
@@ -132,8 +133,8 @@
     "https://bcr.bazel.build/modules/libssh2/1.11.1.bcr.1/source.json": "a2c550916944041adb9e6dd24958977d6e57db4b1a6237e21726dd448136ea96",
     "https://bcr.bazel.build/modules/libunwind/1.8.1/MODULE.bazel": "d9b947b15135786aed51671c22872a93e2637c74caa20e94f2061fd3b1efd6c3",
     "https://bcr.bazel.build/modules/libunwind/1.8.1/source.json": "2b4e58e2fa6ed7204862ab1a4e5978e4107340884c3217596ff7910b8dfae919",
-    "https://bcr.bazel.build/modules/llvm/0.8.3/MODULE.bazel": "dbc1bc13171f8f9980a75524883abef1c491613e8d8d805cd4ffa3767ba9708e",
-    "https://bcr.bazel.build/modules/llvm/0.8.3/source.json": "4b11874c26a9de53c03a25a517ebc36dee6b458c920fe9ed65e3ca279ff19775",
+    "https://bcr.bazel.build/modules/llvm/0.8.9/MODULE.bazel": "9e35ff5bcac996f9edc1b44b8f8baa58c7855e742c5608b07d925dcdbe642100",
+    "https://bcr.bazel.build/modules/llvm/0.8.9/source.json": "424b907b38875f1346b65946e5e482b202b842bd3a570abbe07047d2bc7d667b",
     "https://bcr.bazel.build/modules/mbedtls/3.6.5/MODULE.bazel": "f68edc3db5a01add21c85c2dc2211ecef43a974756656268d8171ad4fb1f30e3",
     "https://bcr.bazel.build/modules/mbedtls/3.6.5/source.json": "e94d5925d46562f393784d0a5ea66635cb2f15740b6dc1d7cb1371f01fcf0e0e",
     "https://bcr.bazel.build/modules/mimalloc/2.2.4.bcr.1/MODULE.bazel": "0a31b9ed52ff6c21aebf0794e18bd6ad4638273d7240d324b4b0843f8bcf5365",
@@ -212,7 +213,8 @@
     "https://bcr.bazel.build/modules/rules_cc/0.2.15/MODULE.bazel": "6a0a4a75a57aa6dc888300d848053a58c6b12a29f89d4304e1c41448514ec6e8",
     "https://bcr.bazel.build/modules/rules_cc/0.2.16/MODULE.bazel": "9242fa89f950c6ef7702801ab53922e99c69b02310c39fb6e62b2bd30df2a1d4",
     "https://bcr.bazel.build/modules/rules_cc/0.2.18/MODULE.bazel": "4460ec36adc8f722a6a2a4ac9374cb91f2acebadaa93fc37966129afb3dece87",
-    "https://bcr.bazel.build/modules/rules_cc/0.2.18/source.json": "abad668ff2fd63ada1ac49bf386d37e27048b89a3465a6fd968bb832b00a09d3",
+    "https://bcr.bazel.build/modules/rules_cc/0.2.19/MODULE.bazel": "d5e0f05b63273281a16654eb6b1a8742a75ec153ac8b4f0419949d6e401e46f0",
+    "https://bcr.bazel.build/modules/rules_cc/0.2.19/source.json": "1ef48cdbd7aa6238015189b582d3d74ef0cbea3cb3e2cb259d782463f570c14a",
     "https://bcr.bazel.build/modules/rules_cc/0.2.4/MODULE.bazel": "1ff1223dfd24f3ecf8f028446d4a27608aa43c3f41e346d22838a4223980b8cc",
     "https://bcr.bazel.build/modules/rules_cc/0.2.8/MODULE.bazel": "f1df20f0bf22c28192a794f29b501ee2018fa37a3862a1a2132ae2940a23a642",
     "https://bcr.bazel.build/modules/rules_cc_autoconf/0.5.4/MODULE.bazel": "df8370e93ade7922ee51c3b6f5e14192a9efb930350f83fa281007e94a129e44",
@@ -345,69 +347,6 @@
                 "rules_rs": "",
                 "aspect_tools_telemetry": "0.3.3"
               }
-            }
-          }
-        }
-      }
-    },
-    "@@llvm+//3rd_party/gcc/extension:gcc.bzl%gcc": {
-      "general": {
-        "bzlTransitiveDigest": "XUWTels9SzO7xhmQBqYtaFYFMTjrFMSDFi/Q7hv4f34=",
-        "usagesDigest": "9IP/e++b81Ga1zICxzXu+yqfe5i4DX5F/SsrgV5a568=",
-        "recordedInputs": [
-          "REPO_MAPPING:llvm+,bazel_lib bazel_lib+",
-          "REPO_MAPPING:llvm+,bazel_tools bazel_tools"
-        ],
-        "generatedRepoSpecs": {
-          "gcc": {
-            "repoRuleId": "@@llvm+//:http_bsdtar_archive.bzl%http_bsdtar_archive",
-            "attributes": {
-              "build_file": "@@llvm+//3rd_party/gcc:gcc.BUILD.bazel",
-              "includes": [
-                "gcc/BASE-VER",
-                "gcc/DATESTAMP",
-                "gcc/ginclude/unwind-arm-common.h",
-                "config/acx.m4",
-                "config/cet.m4",
-                "config/futex.m4",
-                "config/gc++filt.m4",
-                "config/gthr.m4",
-                "config/hwcaps.m4",
-                "config/iconv.m4",
-                "config/lthostflags.m4",
-                "config/multi.m4",
-                "config/no-executables.m4",
-                "config/tls.m4",
-                "config/toolexeclibdir.m4",
-                "config/unwind_ipinfo.m4",
-                "include/ansidecl.h",
-                "include/demangle.h",
-                "include/dyn-string.h",
-                "include/getopt.h",
-                "include/libiberty.h",
-                "libgcc/gthr-posix.h",
-                "libgcc/gthr-single.h",
-                "libgcc/gthr.h",
-                "libgcc/config/arm/unwind-arm.h",
-                "libgcc/unwind-generic.h",
-                "libgcc/unwind-pe.h",
-                "libiberty/cp-demangle.c",
-                "libiberty/cp-demangle.h",
-                "libstdc++-v3/acinclude.m4",
-                "libstdc++-v3/config/**",
-                "libstdc++-v3/configure.ac",
-                "libstdc++-v3/configure.host",
-                "libstdc++-v3/crossconfig.m4",
-                "libstdc++-v3/linkage.m4",
-                "libstdc++-v3/include/**",
-                "libstdc++-v3/libsupc++/**",
-                "libstdc++-v3/src/**"
-              ],
-              "sha256": "dc033fdfd79caf199113446af6d082004534437b6ebd276f9732815d86cbe723",
-              "strip_prefix": "gcc-2bfd402f8569511901ec8fe7628f57471e6d240a",
-              "urls": [
-                "https://github.com/gcc-mirror/gcc/archive/2bfd402f8569511901ec8fe7628f57471e6d240a.tar.gz"
-              ]
             }
           }
         }
