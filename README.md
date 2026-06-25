@@ -361,6 +361,7 @@ See https://registry.bazel.build/docs/rules_rs
 - [Trace Machina Nativelink](https://github.com/TraceMachina/nativelink)
 - [Selenium](https://github.com/SeleniumHQ/selenium)
 - [Etsy](https://www.etsy.com/)
+- [Aya](https://github.com/aya-rs/aya) and [bpf-linker](https://github.com/aya-rs/bpf-linker)
 
 ## Telemetry And Privacy Policy
 
