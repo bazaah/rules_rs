@@ -4,45 +4,7 @@ load(
     _triple_to_constraint_set = "triple_to_constraint_set",
 )
 
-# Disambiguator constraints appended to one (or both) members of a colliding
-# soft/hard-float (or wasm threads on/off) pair.
-_HARDFLOAT = "@rules_rs//rs/platforms/constraints:hardfloat"
-_SOFTFLOAT = "@rules_rs//rs/platforms/constraints:softfloat"
-_WASM_THREADS_ON = "@rules_rs//rs/platforms/constraints:wasm_threads_on"
-_WASM_THREADS_OFF = "@rules_rs//rs/platforms/constraints:wasm_threads_off"
-
-def _sibling_and_constraint(target_triple, targets):
-    """Return (sibling_triple, this_constraint) for target_triple's ABI/threads
-    disambiguation axis, or (None, None) if it participates in none.
-
-    Only the axis whose marker the triple carries is considered; the caller is
-    responsible for confirming the sibling exists and actually collides.
-    """
-
-    # ARM float ABI, eabi/eabihf encoding. Check "eabihf" before "eabi" since
-    # the former contains the latter.
-    if "eabihf" in target_triple:
-        return (target_triple.replace("eabihf", "eabi"), _HARDFLOAT)
-    if "eabi" in target_triple:
-        return (target_triple.replace("eabi", "eabihf"), _SOFTFLOAT)
-
-    # Float ABI, "-softfloat" suffix encoding (e.g. aarch64-unknown-none vs
-    # aarch64-unknown-none-softfloat). The plain triple is the hardfloat half.
-    if target_triple.endswith("-softfloat"):
-        return (target_triple[:-len("-softfloat")], _SOFTFLOAT)
-    if (target_triple + "-softfloat") in targets:
-        return (target_triple + "-softfloat", _HARDFLOAT)
-
-    # WebAssembly threads, "-threads" suffix encoding (e.g. wasm32-wasip1 vs
-    # wasm32-wasip1-threads). The plain triple is the threads-off half.
-    if target_triple.endswith("-threads"):
-        return (target_triple[:-len("-threads")], _WASM_THREADS_ON)
-    if (target_triple + "-threads") in targets:
-        return (target_triple + "-threads", _WASM_THREADS_OFF)
-
-    return (None, None)
-
-def triple_to_rust_constraint_set(target_triple, targets = None):
+def triple_to_rust_constraint_set(target_triple):
     constraints = _triple_to_constraint_set(target_triple)
     t = triple(target_triple)
 
@@ -60,24 +22,19 @@ def triple_to_rust_constraint_set(target_triple, targets = None):
         if t.abi in ("gnu", "gnullvm"):
             constraints.append("@llvm//constraints/windows/crt:msvcrt")
 
-    # Float-ABI (eabi/eabihf, -softfloat) and wasm-threads (-threads) encodings
-    # can collide: a sibling triple that rules_rust maps to the same constraints
-    # makes the per-triple config_setting select ambiguous. Add a marker to
-    # separate them, but only for a genuine collision -- the sibling is in the
-    # target set and rules_rust does not already distinguish the two. Lone
-    # targets, and pairs rules_rust already maps to distinct CPUs (e.g.
-    # thumbv7em-none-eabi vs ...eabihf), are left untouched so existing platforms
-    # keep matching them with no annotation.
-    targets = targets or ALL_TARGET_TRIPLES
-    sibling, disambiguator = _sibling_and_constraint(target_triple, targets)
-    if (sibling and sibling in targets and
-        sorted(_triple_to_constraint_set(target_triple)) == sorted(_triple_to_constraint_set(sibling))):
-        constraints.append(disambiguator)
+    if target_triple.endswith("eabihf") or target_triple == "aarch64-unknown-none":
+        constraints.append("@rules_rs//rs/platforms/constraints:hardfloat")
+    elif target_triple.endswith("eabi") or target_triple == "aarch64-unknown-none-softfloat":
+        constraints.append("@rules_rs//rs/platforms/constraints:softfloat")
+    elif target_triple == "wasm32-wasip1-threads":
+        constraints.append("@rules_rs//rs/platforms/constraints:wasm_threads_on")
+    elif target_triple == "wasm32-wasip1":
+        constraints.append("@rules_rs//rs/platforms/constraints:wasm_threads_off")
 
     return constraints
 
-def triple_to_constraint_set(target_triple, targets = None):
-    constraints = triple_to_rust_constraint_set(target_triple, targets)
+def triple_to_constraint_set(target_triple):
+    constraints = triple_to_rust_constraint_set(target_triple)
     t = triple(target_triple)
 
     if t.system in ("linux", "nixos"):

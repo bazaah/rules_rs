@@ -44,7 +44,7 @@ def declare_rustc_toolchains(
         config_setting = "source_stdlib_building_" + target_key
         native.config_setting(
             name = config_setting,
-            constraint_values = triple_to_rust_constraint_set(target_triple, targets),
+            constraint_values = triple_to_rust_constraint_set(target_triple),
             flag_values = {
                 "@rules_rs//rs/private:source_stdlib_building": "true",
             },
@@ -105,6 +105,7 @@ def declare_rustc_toolchains(
             allocator_library = None,
             global_allocator_library = None,
             binary_ext = select({
+                "@rules_rs//rs/platforms/config:wasm32-unknown-emscripten": ".js",
                 "@platforms//cpu:wasm32": ".wasm",
                 "@platforms//cpu:wasm64": ".wasm",
                 "@platforms//os:emscripten": ".js",
@@ -122,6 +123,7 @@ def declare_rustc_toolchains(
                 "//conditions:default": ".a",
             }),
             dylib_ext = select({
+                "@rules_rs//rs/platforms/config:wasm32-unknown-emscripten": ".js",
                 "@platforms//cpu:wasm32": ".wasm",
                 "@platforms//cpu:wasm64": ".wasm",
                 "@platforms//os:android": ".so",
@@ -199,7 +201,7 @@ def declare_rustc_toolchains(
                     "@platforms//os:" + exec_triple.system,
                     "@platforms//cpu:" + exec_triple.arch,
                 ],
-                target_compatible_with = triple_to_rust_constraint_set(target_triple, targets),
+                target_compatible_with = triple_to_rust_constraint_set(target_triple),
                 target_settings = [
                     "@rules_rust//rust/private:bootstrapped",
                     "@rules_rust//rust/toolchain/channel:" + channel,
@@ -218,7 +220,7 @@ def declare_rustc_toolchains(
                     "@platforms//os:" + exec_triple.system,
                     "@platforms//cpu:" + exec_triple.arch,
                 ],
-                target_compatible_with = triple_to_rust_constraint_set(target_triple, targets),
+                target_compatible_with = triple_to_rust_constraint_set(target_triple),
                 target_settings = [
                     "@rules_rust//rust/private:bootstrapping",
                     "@rules_rust//rust/toolchain/channel:" + channel,
