@@ -1,6 +1,7 @@
 load("@bazel_lib//:bzl_library.bzl", "bzl_library")
 load("@rules_rust//rust:defs.bzl", "rust_binary", "rust_clippy", "rust_library", "rust_test")
 load("@rules_rust//tools/private:tool_utils.bzl", "aspect_repository")
+load("@rules_rust//tools/rust_analyzer:env_file.bzl", "env_file")
 
 package(default_visibility = ["//visibility:public"])
 
@@ -64,13 +65,18 @@ rust_library(
     name = "gen_rust_project_lib",
     srcs = [
         "@rules_rust//tools/rust_analyzer:aquery.rs",
+        "@rules_rust//tools/rust_analyzer:bep.rs",
+        "@rules_rust//tools/rust_analyzer:cache.rs",
         "@rules_rust//tools/rust_analyzer:lib.rs",
         "@rules_rust//tools/rust_analyzer:rust_project.rs",
     ],
-    data = [
+    compile_data = [
         "@rules_rust//rust/private:rust_analyzer_detect_sysroot",
     ],
     edition = "2018",
+    rustc_env_files = [
+        ":toolchain_info_env",
+    ],
     deps = [
         "@rrra//:anyhow",
         "@rrra//:camino",
@@ -80,6 +86,12 @@ rust_library(
         "@rrra//:serde_json",
         "@rules_rust//rust/runfiles",
     ],
+)
+
+env_file(
+    name = "toolchain_info_env",
+    src = "@rules_rust//rust/private:rust_analyzer_detect_sysroot",
+    key = "RUST_ANALYZER_TOOLCHAIN_JSON",
 )
 
 rust_test(
